@@ -13,14 +13,12 @@ homebrew:
     - icu4c
     - imagemagick
     - jq
-    # - maven
     - memcached
     - mysql
     - node
     - nodenv
     - openssh
     - openssl
-    # - packer
     - peco
     - postgresql
     - rbenv
@@ -31,14 +29,13 @@ homebrew:
     - ruby-build
     - sl
     - tfenv
-    - the_silver_searcher
+    - rg
     - tig
     - tmux
     - tree
     - vim
     - watch
     - wget
-    - yarn
 
   tap_names:
     - aws/tap
@@ -51,12 +48,3 @@ homebrew:
 
 go-get:
   - github.com/motemen/ghq
-
-rbenv-plugins:
-  rbenv-each: "https://github.com/rbenv/rbenv-each.git"
-
-atom-packages:
-  - language-review
-  - linter-redpen
-  - sort-lines
-  - sublime-style-column-selection
