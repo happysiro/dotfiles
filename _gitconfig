@@ -1,99 +1,47 @@
-[include]
-  path = .gitconfig.local
-
 [core]
-  excludesfile = ~/.gitignore
-  editor = /usr/bin/vim
-  autocrlf = input
-
+	#editor = /usr/local/bin/nvim
+	editor = /usr/bin/vim
+	excludesfile = /Users/usr0600397/.gitignore_global
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-
-# ref. Gitポケットリファレンス P141
-[merge]
-  keepBackup = false
-  tool = p4merge
-
-[merge]
-  ff = false
-
-[mergetool]
-  keepBackup = false
-
-[mergetool "p4merge"]
-  cmd = p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-
-[color]
-  ui = auto
-
-[push]
-  default = current
-
-# http://qiita.com/yuya_presto/items/5d99499cf96c0ebb09f8
-[rerere]
-  enabled = true
-
-[rebase]
-  autosquash = true
-
-[interactive]
-  singlekey = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[ghq]
+  root = ~/src/
 
 [alias]
-  n  = now --all --stat
-  fm = !git fetch --prune origin && git merge --ff origin/$(git branch --contains HEAD 2>/dev/null | grep "^*" | tr -d '\\* ')
-  dry-merge = merge --no-commit --no-ff
-  mt = mergetool
-  ds = diff --stat
-  ch = cherry-pick -x
-  remote-no-push = "!f() { git remote set-url --push $1 NO_PUSH; }; f"
-  up = update
-
-# fetch pull request branch
-# ref. http://sinsoku.hatenablog.com/entry/2016/01/05/124957
-[alias]
-  fpr = "!f() { git fetch origin pull/$1/head:pr/$1; }; f"
-
-# ref. http://qiita.com/masarakki/items/27f2cb456b4801ccb31b
-[alias]
-  sy = sync
-
-# ref. http://qiita.com/janus_wel/items/45275f5fbc3823fa698f
-[alias]
-  overwrite = push --force-with-lease
-
-# ref. https://github.com/shishi/dotfiles/blob/master/.gitconfig
-[alias]
-  co = checkout
-  st = status -sb
-  ci = commit -v
-  ca = commit --amend
-  di = diff
+  ta = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  co = commit
+  ch = checkout
   br = branch
-  wh = whatchanged
-  stat = log --stat --summary
-  logs = log --graph --decorate --pretty=format:\"%ad [%cn] %h> %n %Cgreen%d%Creset %s %n\" --stat
-  logn = log --graph --decorate --pretty=format:\"%ad [%cn] %h> %n %Cgreen%d%Creset %s %n\" --name-status
-  ri = rebase -i
+  st = status
+  a  = add
+  start = !git checkout master && git pull origin master && git checkout
+  graph = log --decorate --graph --name-status --oneline
+  diff = diff --color
+  amend = commit --amend
 
-# ref https://gist.github.com/teppeis/4117588
-[alias]
-  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-  fp = fetch --prune
-  ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
-
-[secrets]
-  providers = git secrets --aws-provider
-  patterns = [A-Z0-9]{20}
-  patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
-  patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-  allowed = AKIAIOSFODNN7EXAMPLE
-  allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[merge]
+      keepBackup = false;
+      tool = p4merge
+[mergetool "p4merge"]
+      cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+      keepTemporaries = false
+      trustExitCode = false
+      keepBackup = false
+[push]
+	default = simple
+[hub]
+	host = git.pepabo.com
+[ghq "https://git.pepabo.com/"]
+  vcs = git
+[user]
+  name = happysiro
+  email = happy.siro@gmail.com
