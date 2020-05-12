@@ -67,7 +67,7 @@ nnoremap sf :<C-u>Unite file<CR>
 syntax enable
 let g:solarized_termcolors=256
 set background=light
-colorscheme solarized
+" colorscheme solarized
 set expandtab
 set tabstop=2
 set shiftwidth=2
