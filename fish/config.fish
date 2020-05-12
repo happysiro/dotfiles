@@ -6,13 +6,6 @@
 set -gx fish_greeting ''
 set openssl_path (brew --prefix openssl@1.1)
 set PATH $HOME/go/bin /usr/local/opt/coreutils/libexec/gnubin /Users/usr0600397/.pyenv/shims ~/bin/ $PATH
-export GOPATH=$HOME
-export GHE_TOKEN=5d73a36793e0789ee2fe768152c8b11ecfbeb835
-export KINNOSUKE_COMPANYCD=paperboy
-export KINNOSUKE_LOGINCD=0383
-export KINNOSUKE_PASSWORD=sirokuro
-export RUNDECK_API_KEY=CwjcI4YlOUkVZ41h1vEcIwhvp08xlhCy
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_path"
 
 # 見た目の設定
 function fish_prompt
