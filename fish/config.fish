@@ -6,6 +6,7 @@
 set -gx fish_greeting ''
 set openssl_path (brew --prefix openssl@1.1)
 set PATH $HOME/go/bin /usr/local/opt/coreutils/libexec/gnubin /Users/usr0600397/.pyenv/shims ~/bin/ $PATH
+set -x LANG en_US.UTF-8
 
 # 見た目の設定
 function fish_prompt
