@@ -1,6 +1,7 @@
 homebrew:
   package_names:
     - aws-sam-cli
+    - awscli
     - circleci
     - cmake
     - direnv
